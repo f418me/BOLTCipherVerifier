@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formular Senden</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="formbold-logo-wrapper"><a href="https://f418.me">
+            <img src="{{ url_for('static', path='/logo.svg') }}"  alt="logo" width="150" height="45"/>
+        </a>
+    </div>
+
+<div class="formbold-main-wrapper">
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+
+  <div class="formbold-form-wrapper">
+    <form action="/" method="POST">
+        <div class="formbold-input-flex">
+          <div>
+              <label for="preimage" class="formbold-form-label"> Preimage</label>
+              <input
+              type="text"
+              name="preimage"
+              id="preimage"
+              placeholder="A738...."
+              class="formbold-form-input"
+              />
+          </div>
+
+        </div>
+
+        <div class="formbold-input-flex">
+          <div>
+              <label for="email" class="formbold-form-label"> Initialize_Vector </label>
+              <input
+              type="initialize_vector"
+              name="initialize_vector"
+              id="initialize_vector"
+              placeholder="jASDflasfdjl...."
+              class="formbold-form-input"
+              />
+          </div>
+        </div>
+
+        <div>
+            <label for="content_encrypted" class="formbold-form-label"> Encrypted Message </label>
+            <textarea
+                rows="6"
+                name="content_encrypted"
+                id="content_encrypted"
+                placeholder="Type your message"
+                class="formbold-form-input"
+            ></textarea>
+        </div>
+
+        <button class="formbold-btn">
+            Send Message
+        </button>
+    </form>
+  </div>
+    </div>
+</div>
+</body>
+</html>

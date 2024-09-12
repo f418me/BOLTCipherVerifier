@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Antwort</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="formbold-logo-wrapper"><a href="https://f418.me">
+            <img src="{{ url_for('static', path='/logo.svg') }}"  alt="logo" width="150" height="45"/>
+        </a>
+    </div>
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+     <div class="formbold-title-wrapper">
+         <label for="content_decrypted" class="bold-label"> Decrypted Message </label>
+            </div>
+     <div class="formbold-main-wrapper">
+            <p
+                name="content_decrypted"
+                id="content_decrypted"
+                class="formbold-form-output"
+            >{{ content_decrypted }}</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+chardet
+pycryptodome
+pydantic
+pydantic_core
+pyln-client
+jinja2
