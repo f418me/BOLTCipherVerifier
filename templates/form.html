@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formular Senden</title>
+    <title>Nachricht entschlüsseln</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-
 </head>
 <body>
-    <div class="formbold-logo-wrapper"><a href="https://f418.me">
-            <img src="{{ url_for('static', path='/logo.svg') }}"  alt="logo" width="150" height="45"/>
+    <div class="formbold-logo-wrapper"><a href="https://f418.me"> <!-- Link Ziel anpassen, falls nötig -->
+            <img src="{{ url_for('static', path='/logo.svg') }}" alt="logo" width="150" height="45"/>
         </a>
     </div>
 
@@ -19,48 +18,65 @@
     <form action="/" method="POST">
         <div class="formbold-input-flex">
           <div>
-              <label for="preimage" class="formbold-form-label"> Preimage</label>
+              <label for="preimage" class="formbold-form-label"> Preimage (Key Hex)</label>
               <input
               type="text"
               name="preimage"
               id="preimage"
-              placeholder="A738...."
+              placeholder="64 Hex-Zeichen (z.B. a1b2...)"
               class="formbold-form-input"
+              required
               />
           </div>
-
         </div>
 
+        <!-- NEUES FELD für Nonce -->
         <div class="formbold-input-flex">
-          <div>
-              <label for="email" class="formbold-form-label"> Initialize_Vector </label>
-              <input
-              type="initialize_vector"
-              name="initialize_vector"
-              id="initialize_vector"
-              placeholder="jASDflasfdjl...."
-              class="formbold-form-input"
-              />
-          </div>
+            <div>
+                <label for="nonce_hex" class="formbold-form-label"> Nonce (Hex)</label>
+                <input
+                type="text"
+                name="nonce_hex"
+                id="nonce_hex"
+                placeholder="24 Hex-Zeichen (z.B. c3d4...)"
+                class="formbold-form-input"
+                required
+                />
+            </div>
         </div>
+        <!-- Ende NEUES FELD -->
 
         <div>
-            <label for="content_encrypted" class="formbold-form-label"> Encrypted Message </label>
+            <label for="content_encrypted" class="formbold-form-label"> Encrypted Message (Base64)</label>
             <textarea
                 rows="6"
                 name="content_encrypted"
                 id="content_encrypted"
-                placeholder="Type your message"
+                placeholder="Base64 kodierter Text..."
                 class="formbold-form-input"
+                required
             ></textarea>
         </div>
 
         <button class="formbold-btn">
-            Send Message
+            Nachricht entschlüsseln
         </button>
+
+         <!-- Optional: Bereich für Fehlermeldungen -->
+         {% if error_message %}
+         <div id="error" class="formbold-response-wrapper" style="margin-top: 15px; border: 1px solid red; padding: 10px; color: red; background-color: #ffeeee;">
+             <p><strong>Fehler:</strong> {{ error_message }}</p>
+         </div>
+         {% endif %}
+
+         <!-- Ergebnis wird jetzt in response.html angezeigt -->
+         <!-- {% if content_decrypted %}
+            <div id="response" class="formbold-response-wrapper">
+                <p><strong>Decrypted content:</strong> {{ content_decrypted }}</p>
+            </div>
+         {% endif %} -->
     </form>
   </div>
-    </div>
 </div>
 </body>
 </html>
