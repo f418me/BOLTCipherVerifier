@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Decrypt content</title>
-    <link href="{{ url_for('static', path='/styles_boltcipherverifier.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
@@ -24,7 +24,7 @@
               type="text"
               name="preimage"
               id="preimage"
-              placeholder="64 hex char (z.B. a1b2...)"
+              placeholder="64 hex char"
               class="formbold-form-input"
               required
               />
@@ -37,7 +37,7 @@
                 type="text"
                 name="nonce_hex"
                 id="nonce_hex"
-                placeholder="24 hex char (z.B. c3d4...)"
+                placeholder="24 hex char"
                 class="formbold-form-input"
                 required
                 />

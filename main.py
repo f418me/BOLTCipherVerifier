@@ -12,7 +12,7 @@ from starlette.staticfiles import StaticFiles
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 log = logging.getLogger(__name__)
 
-app = FastAPI()
+app = FastAPI(root_path=os.getenv("FASTAPI_ROOT_PATH", ""))
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
