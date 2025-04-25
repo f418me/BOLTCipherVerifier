@@ -6,3 +6,4 @@ pydantic
 pydantic_core
 pyln-client
 jinja2
+python-multipart

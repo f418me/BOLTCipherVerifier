@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Antwort</title>
+    <title>Decrypt BOLTCipher</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-
+    <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
     <div class="formbold-logo-wrapper"><a href="https://f418.me">
-            <img src="{{ url_for('static', path='/logo.svg') }}"  alt="logo" width="150" height="45"/>
+            <img src="{{ url_for('static', path='/logo.svg') }}" alt="logo" width="150" height="45"/>
         </a>
     </div>
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
-     <div class="formbold-title-wrapper">
-         <label for="content_decrypted" class="bold-label"> Decrypted Message </label>
+
+    <div class="formbold-main-wrapper">
+        <div class="formbold-form-wrapper" style="text-align: center;">
+
+            <div class="formbold-title-wrapper" style="margin-bottom: 20px;">
+                 <h2 class="bold-label">Entschlüsselungsergebnis</h2>
             </div>
-     <div class="formbold-main-wrapper">
-            <p
-                name="content_decrypted"
+
+            <div style="text-align: left; margin-bottom: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
+                <p><strong>used preimage (key hex):</strong></p>
+                <p style="word-wrap: break-word; font-family: monospace;">{{ preimage }}</p>
+                <p style="margin-top: 10px;"><strong>used nonce (hex):</strong></p>
+                <p style="word-wrap: break-word; font-family: monospace;">{{ nonce_hex }}</p>
+            </div>
+
+            <div class="formbold-title-wrapper" style="margin-bottom: 10px;">
+                 <label for="content_decrypted" class="bold-label" style="font-size: 1.2em;">decrypted content</label>
+            </div>
+
+            <div
                 id="content_decrypted"
                 class="formbold-form-output"
-            >{{ content_decrypted }}</p>
+                style="white-space: pre-wrap; word-wrap: break-word; text-align: left; background-color: #eef; padding: 15px; border-radius: 5px; min-height: 100px;"
+            >{{ content_decrypted }}</div>
+
+            <br>
+            <a href="/" class="formbold-btn" style="display: inline-block; margin-top: 20px; text-decoration: none;">new input</a>
         </div>
     </div>
 </body>
-
 </html>
