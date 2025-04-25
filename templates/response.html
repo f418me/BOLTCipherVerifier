@@ -3,6 +3,7 @@
 <head>
     <title>Decrypt BOLTCipher</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
     <div class="formbold-logo-wrapper"><a href="https://f418.me">
@@ -20,14 +21,14 @@
             </div>
 
             <div style="text-align: left; margin-bottom: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
-                <p><strong>Verwendeter Preimage (Key Hex):</strong></p>
+                <p><strong>used preimage (key hex):</strong></p>
                 <p style="word-wrap: break-word; font-family: monospace;">{{ preimage }}</p>
-                <p style="margin-top: 10px;"><strong>Verwendete Nonce (Hex):</strong></p>
+                <p style="margin-top: 10px;"><strong>used nonce (hex):</strong></p>
                 <p style="word-wrap: break-word; font-family: monospace;">{{ nonce_hex }}</p>
             </div>
 
             <div class="formbold-title-wrapper" style="margin-bottom: 10px;">
-                 <label for="content_decrypted" class="bold-label" style="font-size: 1.2em;">Entschlüsselte Nachricht</label>
+                 <label for="content_decrypted" class="bold-label" style="font-size: 1.2em;">decrypted content</label>
             </div>
 
             <div
@@ -37,7 +38,7 @@
             >{{ content_decrypted }}</div>
 
             <br>
-            <a href="/" class="formbold-btn" style="display: inline-block; margin-top: 20px; text-decoration: none;">Neue Eingabe</a>
+            <a href="/" class="formbold-btn" style="display: inline-block; margin-top: 20px; text-decoration: none;">new input</a>
         </div>
     </div>
 </body>

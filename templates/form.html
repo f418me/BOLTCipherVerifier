@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Nachricht entschlüsseln</title>
+    <title>Decrypt content</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
     <div class="formbold-logo-wrapper"><a href="https://f418.me">
@@ -18,12 +19,12 @@
     <form action="/" method="POST">
         <div class="formbold-input-flex">
           <div>
-              <label for="preimage" class="formbold-form-label"> Preimage (Key Hex)</label>
+              <label for="preimage" class="formbold-form-label"> preimage (key hex)</label>
               <input
               type="text"
               name="preimage"
               id="preimage"
-              placeholder="64 Hex-Zeichen (z.B. a1b2...)"
+              placeholder="64 hex char (z.B. a1b2...)"
               class="formbold-form-input"
               required
               />
@@ -31,12 +32,12 @@
         </div>
         <div class="formbold-input-flex">
             <div>
-                <label for="nonce_hex" class="formbold-form-label"> Nonce (Hex)</label>
+                <label for="nonce_hex" class="formbold-form-label"> nonce (hex)</label>
                 <input
                 type="text"
                 name="nonce_hex"
                 id="nonce_hex"
-                placeholder="24 Hex-Zeichen (z.B. c3d4...)"
+                placeholder="24 hex char (z.B. c3d4...)"
                 class="formbold-form-input"
                 required
                 />
@@ -44,19 +45,19 @@
         </div>
 
         <div>
-            <label for="content_encrypted" class="formbold-form-label"> Encrypted Message (Base64)</label>
+            <label for="content_encrypted" class="formbold-form-label"> encrypted content (Base64)</label>
             <textarea
                 rows="6"
                 name="content_encrypted"
                 id="content_encrypted"
-                placeholder="Base64 kodierter Text..."
+                placeholder="base64 coded content..."
                 class="formbold-form-input"
                 required
             ></textarea>
         </div>
 
         <button class="formbold-btn">
-            Nachricht entschlüsseln
+            Decrypt  content
         </button>
          {% if error_message %}
          <div id="error" class="formbold-response-wrapper" style="margin-top: 15px; border: 1px solid red; padding: 10px; color: red; background-color: #ffeeee;">

@@ -124,7 +124,7 @@ body {
   padding: 14px 25px;
   border: none;
   font-weight: 500;
-  background-color: #6A64F1;
+  background-color: #20335b;
   color: white;
   cursor: pointer;
   margin-top: 25px;
@@ -132,4 +132,11 @@ body {
 .formbold-btn:hover {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
+
+.formbold-logo-wrapper {
+  margin-top: 20px; /* Entspricht ungefähr 15pt, passe den Wert nach Bedarf an */
+  margin-left: 20px; /* Entspricht ungefähr 15pt, passe den Wert nach Bedarf an */
+  display: block; /* Stellt sicher, dass Margins korrekt angewendet werden */
+}
+
 
