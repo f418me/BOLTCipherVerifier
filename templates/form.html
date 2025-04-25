@@ -5,7 +5,7 @@
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="formbold-logo-wrapper"><a href="https://f418.me"> <!-- Link Ziel anpassen, falls nötig -->
+    <div class="formbold-logo-wrapper"><a href="https://f418.me">
             <img src="{{ url_for('static', path='/logo.svg') }}" alt="logo" width="150" height="45"/>
         </a>
     </div>
@@ -29,8 +29,6 @@
               />
           </div>
         </div>
-
-        <!-- NEUES FELD für Nonce -->
         <div class="formbold-input-flex">
             <div>
                 <label for="nonce_hex" class="formbold-form-label"> Nonce (Hex)</label>
@@ -44,7 +42,6 @@
                 />
             </div>
         </div>
-        <!-- Ende NEUES FELD -->
 
         <div>
             <label for="content_encrypted" class="formbold-form-label"> Encrypted Message (Base64)</label>
@@ -61,20 +58,11 @@
         <button class="formbold-btn">
             Nachricht entschlüsseln
         </button>
-
-         <!-- Optional: Bereich für Fehlermeldungen -->
          {% if error_message %}
          <div id="error" class="formbold-response-wrapper" style="margin-top: 15px; border: 1px solid red; padding: 10px; color: red; background-color: #ffeeee;">
              <p><strong>Fehler:</strong> {{ error_message }}</p>
          </div>
          {% endif %}
-
-         <!-- Ergebnis wird jetzt in response.html angezeigt -->
-         <!-- {% if content_decrypted %}
-            <div id="response" class="formbold-response-wrapper">
-                <p><strong>Decrypted content:</strong> {{ content_decrypted }}</p>
-            </div>
-         {% endif %} -->
     </form>
   </div>
 </div>

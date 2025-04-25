@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Entschlüsselungsergebnis</title>
+    <title>Decrypt BOLTCipher</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="formbold-logo-wrapper"><a href="https://f418.me"> <!-- Link Ziel anpassen, falls nötig -->
+    <div class="formbold-logo-wrapper"><a href="https://f418.me">
             <img src="{{ url_for('static', path='/logo.svg') }}" alt="logo" width="150" height="45"/>
         </a>
     </div>
@@ -13,13 +13,12 @@
   <!-- Learn More: https://formbold.com -->
 
     <div class="formbold-main-wrapper">
-        <div class="formbold-form-wrapper" style="text-align: center;"> <!-- Zentriert den Inhalt etwas -->
+        <div class="formbold-form-wrapper" style="text-align: center;">
 
             <div class="formbold-title-wrapper" style="margin-bottom: 20px;">
                  <h2 class="bold-label">Entschlüsselungsergebnis</h2>
             </div>
 
-            <!-- Anzeige der verwendeten Eingaben -->
             <div style="text-align: left; margin-bottom: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
                 <p><strong>Verwendeter Preimage (Key Hex):</strong></p>
                 <p style="word-wrap: break-word; font-family: monospace;">{{ preimage }}</p>
@@ -31,7 +30,6 @@
                  <label for="content_decrypted" class="bold-label" style="font-size: 1.2em;">Entschlüsselte Nachricht</label>
             </div>
 
-            <!-- Angepasste Anzeige für multiline Text -->
             <div
                 id="content_decrypted"
                 class="formbold-form-output"

@@ -1,5 +1,3 @@
-# --- START OF FILE main.py (Decryption Application) ---
-
 import binascii
 import logging
 from base64 import b64decode
@@ -8,11 +6,9 @@ import uvicorn
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-# Import ChaCha20 instead of AES
 from Crypto.Cipher import ChaCha20
 from starlette.staticfiles import StaticFiles
 
-# Basic Logging setup
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 log = logging.getLogger(__name__)
 
@@ -27,15 +23,14 @@ async def read_form(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
 
 
-# Empfangen und Antworten mit den übermittelten Formulardaten
 @app.post("/", response_class=HTMLResponse)
 async def handle_form(request: Request,
-                      preimage: str = Form(...),        # Key (hex)
-                      nonce_hex: str = Form(...),       # Nonce (hex) - NEU
-                      content_encrypted: str = Form(...) # Encrypted Content (Base64)
+                      preimage: str = Form(...),
+                      nonce_hex: str = Form(...),
+                      content_encrypted: str = Form(...)
                      ):
     try:
-        # Preimage ist der Key für ChaCha20 (muss 32 Bytes sein)
+        # Preimage is the key for ChaCha20 (32 Bytes)
         key = binascii.unhexlify(preimage)
         if len(key) != 32:
             log.error(f"Invalid key length: {len(key)} bytes. Expected 32.")
@@ -45,7 +40,7 @@ async def handle_form(request: Request,
                 "error_message": "Fehler: Ungültige Preimage-Länge (muss 64 Hex-Zeichen / 32 Bytes sein)."
             })
 
-        # Nonce (muss 12 Bytes sein, basierend auf dem Encryption-Skript)
+        # Nonce (12 Bytes)
         nonce = binascii.unhexlify(nonce_hex)
         if len(nonce) != 12:
             log.error(f"Invalid nonce length: {len(nonce)} bytes. Expected 12.")
@@ -72,13 +67,13 @@ async def handle_form(request: Request,
         content_decrypted = content_decrypted_bytes.decode('utf-8')
 
         log.info("Decryption successful.")
-        # log.debug(f"Decrypted content: {content_decrypted}") # Optional
+        log.debug(f"Decrypted content: {content_decrypted}") # Optional
 
         # Return the response page with the decrypted content
-        return templates.TemplateResponse("response.html", { # Verwende response.html für die Antwort
+        return templates.TemplateResponse("response.html", {
             "request": request,
-            "preimage": preimage, # Optional: Zum Anzeigen
-            "nonce_hex": nonce_hex,   # Optional: Zum Anzeigen
+            "preimage": preimage,
+            "nonce_hex": nonce_hex,
             "content_decrypted": content_decrypted
         })
 
@@ -101,20 +96,19 @@ async def handle_form(request: Request,
             "error_message": "Fehler: Entschlüsselte Daten konnten nicht als UTF-8 Text dekodiert werden."
         })
     except Exception as e:
-        log.exception("An unexpected error occurred during decryption.") # Loggt den Stack Trace
+        log.exception("An unexpected error occurred during decryption.")
         return templates.TemplateResponse("form.html", {
             "request": request,
             "error_message": f"Ein unerwarteter Fehler ist aufgetreten: {e}"
         })
 
 
-# Route für Testzwecke bleibt bestehen (optional)
 @app.get("/test-response", response_class=HTMLResponse)
 async def read_form_test(request: Request):
     content_decrypted = "Test Response: Dies ist ein Test einer Antwort."
-    # Simuliere Werte für die Anzeige in response.html
-    preimage_test = "a" * 64 # Beispiel Preimage
-    nonce_test = "b" * 24    # Beispiel Nonce
+    # synthetic data
+    preimage_test = "a" * 64
+    nonce_test = "b" * 24
     return templates.TemplateResponse("response.html", {
         "request": request,
         "preimage": preimage_test,
