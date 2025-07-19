@@ -71,3 +71,17 @@ podman run --rm -p 8000:8000 boltcipherverifier
 ```
 
 The application will be available at `http://localhost:8000`.
+
+## Configuration via Environment Variables
+
+The application can be configured through environment variables. You can copy
+`.env-example` to `.env` and adjust the values or set them directly in your
+environment.
+
+- `APP_HOST` - Host address to bind (default `127.0.0.1`).
+- `APP_PORT` - Port to listen on (default `8000`).
+- `FASTAPI_ROOT_PATH` - Root path when the app is served behind a proxy.
+- `PROXY_HEADERS` - Set to `True` if the app is running behind a reverse proxy.
+- `FORWARDED_ALLOW_IPS` - Comma separated list of trusted proxy IPs (`*` to trust any).
+
+
