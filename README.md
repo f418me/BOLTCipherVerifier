@@ -48,3 +48,26 @@ You can run the application using the Uvicorn ASGI server.
 ```bash
 uvicorn main:app --reload
 ```
+
+## Docker/Podman
+
+Alternatively you can run the application inside a container. A `Dockerfile` is
+provided and works with both Docker and Podman.
+
+### Build the image
+
+```bash
+docker build -t boltcipherverifier .
+# or using podman
+podman build -t boltcipherverifier .
+```
+
+### Run the container
+
+```bash
+docker run --rm -p 8000:8000 boltcipherverifier
+# or using podman
+podman run --rm -p 8000:8000 boltcipherverifier
+```
+
+The application will be available at `http://localhost:8000`.
