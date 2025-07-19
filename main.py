@@ -117,18 +117,17 @@ async def read_form_test(request: Request):
     })
 
 
+
 if __name__ == "__main__":
-    app_host = os.getenv("APP_HOST", "127.0.0.1")
-    app_port = int(os.getenv("APP_PORT", "8000"))
+        app_host = os.getenv("APP_HOST", "0.0.0.0")
+        app_port = int(os.getenv("APP_PORT", "8000"))
+        proxy_headers = os.getenv("PROXY_HEADERS", "True").lower() in {"true", "1", "yes"}
+        forwarded_allow_ips = os.getenv("FORWARDED_ALLOW_IPS", "*")
 
-    proxy_headers_env = os.getenv("PROXY_HEADERS", "False")
-    proxy_headers = proxy_headers_env.lower() in ("1", "true", "yes", "on")
-    forwarded_allow_ips = os.getenv("FORWARDED_ALLOW_IPS", "127.0.0.1")
-
-    uvicorn.run(
-        app,
-        host=app_host,
-        port=app_port,
-        proxy_headers=proxy_headers,
-        forwarded_allow_ips=forwarded_allow_ips,
-    )
+        uvicorn.run(
+            app,
+            host=app_host,
+            port=app_port,
+            proxy_headers=proxy_headers,
+            forwarded_allow_ips=forwarded_allow_ips,
+        )
